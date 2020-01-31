@@ -26,7 +26,8 @@ defmodule FibonacciSequence do
   def recursion(prev_int, int, n) do
     next = prev_int + int
     IO.inspect(next, label: "recursion")
-    recursion(int, next, n-1)
+    # recursion(int, next, n-1)
+    spawn(fn -> :timer.sleep(3000); recursion(int, next, n-1) end)
   end
 
   def delayed_non_blocking_recursion(int) do
